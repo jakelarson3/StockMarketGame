@@ -30,6 +30,8 @@ class Stock:
     def print_prev_prices(self):
         current_index = 0
         for stock in self.prices_log:
-            print("Day %d: " % current_index)
+            str_to_print = "Day {0}: {1}".format(current_index, self.prices_log[current_index])
+            print(str_to_print)
+            current_index += 1
 
 
