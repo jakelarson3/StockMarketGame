@@ -8,6 +8,7 @@ class Stock:
         self.prices_log.append(self.price)
 
     def __str__(self):
+        """returns the string of the stock name and price"""
         return self.name + ": " + self.price
 
     def get_name(self):
@@ -28,6 +29,7 @@ class Stock:
             self.prices_log.append(self.price)
 
     def print_prev_prices(self):
+        """prints the list of the stock prices that the stock has previously had"""
         current_index = 0
         for stock in self.prices_log:
             str_to_print = "Day {0}: {1}".format(current_index, self.prices_log[current_index])
