@@ -13,8 +13,9 @@ class StockMarket:
 
     def create_stocks(self):
         """creates the stocks that are going to be used in the stock market game"""
-        names = ['Wonka Industries','Acme Corp.', 'Stark Industries', 'Wayne Enterprises', 'Soylent', 'Hooli', 'Prestige Worldwide',
-         'Los Pollos Hermanos', 'Oscorp', 'Iron Bank of Braavos']
+        names = ['Wonka Industries', 'Acme Corp.', 'Stark Industries', 'Wayne Enterprises', 'Soylent', 'Hooli',
+                 'Prestige Worldwide',
+                 'Los Pollos Hermanos', 'Oscorp', 'Iron Bank of Braavos']
         for i in range(0, 10):
             name_to_remove = random.choice(names)
             if i < 4:
@@ -30,7 +31,6 @@ class StockMarket:
         """updates the day of the stock market"""
         # call randomize stock prices
         self.current_day += 1
-
 
     def overnight_stock_update(self):
         """updates the stock price of each stock by a (semi) random amount"""
@@ -73,6 +73,7 @@ class StockMarket:
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.05, 1.15)
                     stock.set_price(stock.price * change_percent)
+        self.next_day()
 
     def boom_stock_update(self):
         """updates the stock price overnight for a regular market"""
@@ -106,6 +107,7 @@ class StockMarket:
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.08, 1.2)
                     stock.set_price(stock.price * change_percent)
+        self.next_day()
 
     def crash_stock_update(self):
         """updates the stock price overnight for a regular market"""
@@ -139,12 +141,4 @@ class StockMarket:
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(.7, 1)
                     stock.set_price(stock.price * change_percent)
-
-
-
-
-
-
-
-
-
+        self.next_day()
