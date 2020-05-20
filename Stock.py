@@ -3,14 +3,19 @@ class Stock:
         self.name = name
         self.price = price
         self.is_owned = False
-        self.percent_change = 0.0
         self.prices_log = []
         self.prices_log.append(self.price)
         self.quantity_owned = 0
 
     def __str__(self):
         """returns the string of the stock name and price"""
-        return self.name + ": $" + self.price + " Quantity Owned: " + self.quantity_owned
+        return self.name + ": $" + str(self.price) + " Quantity Owned: " + str(self.quantity_owned)
+
+    def __eq__(self, other):
+        if self.name.lower() == other.name.lower():
+            return True
+        else:
+            return False
 
     def get_name(self):
         """getter for stock name"""
