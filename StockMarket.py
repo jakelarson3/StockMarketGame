@@ -16,7 +16,7 @@ class StockMarket:
 
     def create_stocks(self):
         """creates the stocks that are going to be used in the stock market game"""
-        names = self.stock_names
+        names = self.stock_names.copy()
         for i in range(0, 10):
             name_to_remove = random.choice(names)
             if i < 4:
