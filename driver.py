@@ -13,6 +13,7 @@ def main():
         if not initialized:
             user = startup()
             initialized = True
+        print("Main menu:\nEnter 'view', 'buy', 'sell', 'advance', 'help' or 'exit'")
         try:
             user_in = input(":").lower()
             if user_in == "view":
@@ -58,19 +59,19 @@ def view(stock_market,user):
 
 def buy(stock_market, user):
     print("what company's stock would you like to buy?\n\
-        Your options are: 'Wonka Industries', 'Acme Corp.', 'Stark Industries',\n\
-            'Wayne Enterprises', 'Soylent', 'Hooli', 'Prestige Worldwide', 'Los Pollos Hermanos',\n\
-                'Oscorp', 'Iron Bank of Braavos'")
+Your options are: 'Wonka Industries', 'Acme Corp.', 'Stark Industries',\n\
+'Wayne Enterprises', 'Soylent', 'Hooli', 'Prestige Worldwide', 'Los Pollos Hermanos',\n\
+'Oscorp', 'Iron Bank of Braavos'")
     user_in = input(":").lower()
-    if user_in in stock_market.stock_names.lower():
+    if user_in in [s.lower() for s in stock_market.stock_names]:
         for stock in stock_market.stocks:
             if user_in == stock.name.lower():
                 stock_to_buy = stock
                 print(str(stock))
         offers = stock_market.generate_offers(stock_to_buy)
         print("You have three offers that could be cheaper or more expensive than the current stock price\n\
-            1: %.2f, 2: %.2f, or 3: %.2f\n\
-            Enter the number of the price that you want to buy at('1', '2' or '3'):" % offers[0], offers[1], offers[2])
+1: %.2f, 2: %.2f, or 3: %.2f\n\
+Enter the number of the price that you want to buy at('1', '2' or '3'):" % offers[0], offers[1], offers[2])
         while True:
             user_offer = input(":")
             if user_offer in ["1","2","3"]:
