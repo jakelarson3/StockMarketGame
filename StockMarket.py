@@ -29,6 +29,7 @@ class StockMarket:
 
     def next_day(self):
         """updates the day of the stock market"""
+        self.overnight_stock_update()
         self.current_day += 1
 
     def overnight_stock_update(self):
@@ -86,7 +87,6 @@ class StockMarket:
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.05, 1.15)
                     stock.set_price(stock.price * change_percent)
-        self.next_day()
 
     def boom_stock_update(self):
         """updates the stock price overnight for a regular market"""
@@ -120,7 +120,6 @@ class StockMarket:
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.08, 1.2)
                     stock.set_price(stock.price * change_percent)
-        self.next_day()
 
     def crash_stock_update(self):
         """updates the stock price overnight for a regular market"""
@@ -154,7 +153,6 @@ class StockMarket:
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(.7, 1)
                     stock.set_price(stock.price * change_percent)
-        self.next_day()
 
     def generate_offers(self, stock):
         """generates 3 slightly random offers for stock purchase for the user to pick between

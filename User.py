@@ -16,12 +16,22 @@ class User:
             new_stock.is_owned = True
             self.stocks.append(new_stock)
         self.money -= (offer_price * quantity)
-        self.mone
-
 
     def sell_stock(self, stock_to_remove, quantity):
         for stock in self.stocks:
-            if stock.name == stock_to_remove
+            if stock.name.lower() == stock_to_remove.lower():
+                if stock.quantity_owned > 1:
+                    if quantity == stock.quantity_owned:
+                        self.money += stock.price * quantity
+                        self.stocks.remove(stock)
+                    else:
+                        stock.quantity_owned -= quantity
+                        self.money += stock.price * quantity
+                elif stock.quantity_owned == 1:
+                    self.money += stock.price
+                    self.stocks.remove(stock)
+
+        self.money += quantity  # transaction fee bonus!
 
     def stocks_to_string(self):
         num_stocks = len(self.stocks)
@@ -43,7 +53,7 @@ class User:
 
     def display_user(self):
         stock = self.stocks_to_string()
-        str_to_print = "Name: " + self.name + "\n Cash Left: " + str(self.money) + "\n Stocks: " + stock
+        str_to_print = "Name: " + self.name + "\nCash Left: " + str(self.money) + "\nStocks: " + stock
         print(str_to_print)
 
     def get_total_worth(self):

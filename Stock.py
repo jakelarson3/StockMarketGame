@@ -10,7 +10,7 @@ class Stock:
 
     def __str__(self):
         """returns the string of the stock name and price"""
-        return self.name + ": $" + self.price + "Quantity Owned: " + self.quantity_owned
+        return self.name + ": $" + self.price + " Quantity Owned: " + self.quantity_owned
 
     def get_name(self):
         """getter for stock name"""
