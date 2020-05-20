@@ -10,7 +10,6 @@ class StockMarket:
         self.is_market_crash = False
         self.is_market_boom = False
         self.days_of_boom_crash = 0
-        self.thread_active = False
         self.stock_names = ['Wonka Industries', 'Acme Corp.', 'Stark Industries', 'Wayne Enterprises', 'Soylent', 'Hooli',
                  'Prestige Worldwide',
                  'Los Pollos Hermanos', 'Oscorp', 'Iron Bank of Braavos']
