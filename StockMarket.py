@@ -10,6 +10,7 @@ class StockMarket:
         self.stocks = []
         self.is_market_crash = False
         self.is_market_boom = False
+        self.days_of_boom_crash = 0
 
     def create_stocks(self):
         """creates the stocks that are going to be used in the stock market game"""
@@ -29,11 +30,24 @@ class StockMarket:
 
     def next_day(self):
         """updates the day of the stock market"""
-        # call randomize stock prices
         self.current_day += 1
 
     def overnight_stock_update(self):
         """updates the stock price of each stock by a (semi) random amount"""
+        if self.is_market_boom or self.is_market_crash:
+            if self.days_of_boom_crash == 2:  # max days of boom or crash
+                self.is_market_crash = False
+                self.is_market_boom = False
+            else:
+                self.days_of_boom_crash += 1
+
+        random_chance = random.random()
+        if not self.is_market_boom and not self.is_market_crash:
+            if 0.00 < random_chance <= 0.04:
+                self.is_market_crash = True
+            elif 0.96 < random_chance < 1:
+                self.is_market_boom = True
+
         if self.is_market_boom:
             self.boom_stock_update()
         elif self.is_market_crash:
@@ -142,3 +156,24 @@ class StockMarket:
                     change_percent = random.uniform(.7, 1)
                     stock.set_price(stock.price * change_percent)
         self.next_day()
+
+    def generate_offers(self, stock):
+        """generates 3 slightly random offers for stock purchase for the user to pick between
+           returns a list of the 3 string offers"""
+        offer_list = []
+        for i in range(0, 3):
+            if stock.price <= 10:  # small company
+                change_percent = random.uniform(0.8, 1.2)
+                offer_price = stock.price * change_percent
+            elif 10 < stock.price <= 50:  # medium company
+                change_percent = random.uniform(.9, 1.1)
+                offer_price = stock.price * change_percent
+            elif 50 < stock.price <= 150:  # medium large company
+                change_percent = random.uniform(.95, 1.05)
+                offer_price = stock.price * change_percent
+            else:  # very large company
+                change_percent = random.uniform(.98, 1.02)
+                offer_price = stock.price * change_percent
+            offer_list.append(offer_price)
+        return offer_list
+
