@@ -63,31 +63,31 @@ class StockMarket:
             if stock.price <= 10:  # small company
                 if 0.0 < random_chance <= 0.75:
                     change_percent = random.uniform(.2, 3)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # small stock increases fast
                     change_percent = random.uniform(5, 15)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             elif 10 < stock.price <= 50:  # medium company
                 if 0.0 < random_chance <= 0.75:
                     change_percent = random.uniform(.6, 1.4)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.5, 3)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             elif 50 < stock.price <= 150:  # medium large company
                 if 0.0 < random_chance <= 0.85:
                     change_percent = random.uniform(.85, 1.15)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.15, 1.3)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             else:  # very large company
                 if 0.0 < random_chance <= 0.95:
                     change_percent = random.uniform(.95, 1.05)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.05, 1.15)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
 
     def boom_stock_update(self):
         """updates the stock price overnight for a regular market"""
@@ -96,31 +96,31 @@ class StockMarket:
             if stock.price <= 10:  # small company
                 if 0.0 < random_chance <= 0.65:
                     change_percent = random.uniform(.9, 10)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # small stock increases fast
                     change_percent = random.uniform(10, 20)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             elif 10 < stock.price <= 50:  # medium company
                 if 0.0 < random_chance <= 0.85:
                     change_percent = random.uniform(.9, 2)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(2, 4)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             elif 50 < stock.price <= 150:  # medium large company
                 if 0.0 < random_chance <= 0.85:
                     change_percent = random.uniform(.95, 1.20)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.2, 1.4)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             else:  # very large company
                 if 0.0 < random_chance <= 0.95:
                     change_percent = random.uniform(1, 1.08)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(1.08, 1.2)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
 
     def crash_stock_update(self):
         """updates the stock price overnight for a regular market"""
@@ -129,31 +129,31 @@ class StockMarket:
             if stock.price <= 10:  # small company
                 if 0.0 < random_chance <= 0.65:
                     change_percent = random.uniform(0.2, 2)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # small stock increases fast
                     change_percent = random.uniform(0.01, 1)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             elif 10 < stock.price <= 50:  # medium company
                 if 0.0 < random_chance <= 0.85:
                     change_percent = random.uniform(.6, 1.5)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(0.2, 1)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             elif 50 < stock.price <= 150:  # medium large company
                 if 0.0 < random_chance <= 0.85:
                     change_percent = random.uniform(.6, 1.10)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(.4, 1)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
             else:  # very large company
                 if 0.0 < random_chance <= 0.95:
                     change_percent = random.uniform(.8, 1.03)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
                 else:  # medium stock increases slightly better than normal
                     change_percent = random.uniform(.7, 1)
-                    stock.set_price(stock.price * change_percent)
+                    stock.set_price(round(stock.price * change_percent),2)
 
     def generate_offers(self, stock):
         """generates 3 slightly random offers for stock purchase for the user to pick between
@@ -162,16 +162,16 @@ class StockMarket:
         for i in range(0, 3):
             if stock.price <= 10:  # small company
                 change_percent = random.uniform(0.8, 1.2)
-                offer_price = stock.price * change_percent
+                offer_price = round((stock.price * change_percent),2)
             elif 10 < stock.price <= 50:  # medium company
                 change_percent = random.uniform(.9, 1.1)
-                offer_price = stock.price * change_percent
+                offer_price = round((stock.price * change_percent),2)
             elif 50 < stock.price <= 150:  # medium large company
                 change_percent = random.uniform(.95, 1.05)
-                offer_price = stock.price * change_percent
+                offer_price = round((stock.price * change_percent),2)
             else:  # very large company
                 change_percent = random.uniform(.98, 1.02)
-                offer_price = stock.price * change_percent
+                offer_price = round((stock.price * change_percent),2)
             offer_list.append(offer_price)
         return offer_list
 
