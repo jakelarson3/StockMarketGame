@@ -6,7 +6,6 @@ class StockMarket:
     def __init__(self):
         self.max_days = 10
         self.current_day = 0
-        self.dow = 0.0
         self.stocks = []
         self.is_market_crash = False
         self.is_market_boom = False
