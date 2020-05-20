@@ -10,12 +10,14 @@ class StockMarket:
         self.is_market_crash = False
         self.is_market_boom = False
         self.days_of_boom_crash = 0
+        self.thread_active = False
+        self.stock_names = ['Wonka Industries', 'Acme Corp.', 'Stark Industries', 'Wayne Enterprises', 'Soylent', 'Hooli',
+                 'Prestige Worldwide',
+                 'Los Pollos Hermanos', 'Oscorp', 'Iron Bank of Braavos']
 
     def create_stocks(self):
         """creates the stocks that are going to be used in the stock market game"""
-        names = ['Wonka Industries', 'Acme Corp.', 'Stark Industries', 'Wayne Enterprises', 'Soylent', 'Hooli',
-                 'Prestige Worldwide',
-                 'Los Pollos Hermanos', 'Oscorp', 'Iron Bank of Braavos']
+        names = self.stock_names
         for i in range(0, 10):
             name_to_remove = random.choice(names)
             if i < 4:
