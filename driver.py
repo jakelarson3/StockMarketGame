@@ -13,7 +13,7 @@ def main():
         if not initialized:
             user = startup()
             initialized = True
-        print("Main menu:\nEnter 'view', 'buy', 'sell', 'advance', 'help' or 'exit'")
+        print("Enter 'view', 'buy', 'sell', 'advance', 'help' or 'exit':")
         try:
             user_in = input(":").lower()
             if user_in == "view":

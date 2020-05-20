@@ -49,7 +49,7 @@ class User:
         current_index = 0
         stocks_string = ""
         if len(self.stocks) == 0:
-            print("You don't own any stocks yet!")
+            #print("You don't own any stocks yet!")
             return
         for stock in self.stocks:
             if current_index == num_stocks - 1:  # don't print "," at end
@@ -62,7 +62,10 @@ class User:
     def display_user(self):
         """displays the name, cash, and stocks the user has"""
         stock = self.stocks_to_string()
-        str_to_print = "Name: " + self.name + "\nCash Left: " + str(self.money) + "\nStocks: " + stock
+        if stock:
+            str_to_print = "Name: " + self.name + "\nCash Left: " + str(self.money) + "\nStocks: " + stock
+        else:
+            str_to_print = "Name: " + self.name + "\nCash Left: " + str(self.money) + "\nStocks: None"
         print(str_to_print)
 
     def get_total_worth(self):
