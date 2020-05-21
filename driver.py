@@ -47,7 +47,7 @@ def view(stock_market,user):
     user_in = input(":").lower()
     if user_in == 'my':
         user.display_user()
-        print(user.display_net_worth)
+        user.display_net_worth()
     elif user_in == 'market':
         for stock in stock_market.stocks:
             print(str(stock))
