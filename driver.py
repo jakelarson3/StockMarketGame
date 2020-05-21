@@ -31,7 +31,7 @@ def main():
                 break
         except KeyboardInterrupt:
             break
-    return "Thank you for playing our stock market game!"
+    return "\nThank you for playing our stock market game!"
 
 def help_me():
     print("Welcome to Stockify!\n\
@@ -58,7 +58,7 @@ def view(stock_market,user):
     return ""
 
 def buy(stock_market, user):
-    print("what company's stock would you like to buy?\n\
+    print("What company's stock would you like to buy?\n\
 Your options are: 'Wonka Industries', 'Acme Corp.', 'Stark Industries',\n\
 'Wayne Enterprises', 'Soylent', 'Hooli', 'Prestige Worldwide', 'Los Pollos Hermanos',\n\
 'Oscorp', 'Iron Bank of Braavos'")
@@ -71,11 +71,11 @@ Your options are: 'Wonka Industries', 'Acme Corp.', 'Stark Industries',\n\
         offers = stock_market.generate_offers(stock_to_buy)
         print("You have three offers that could be cheaper or more expensive than the current stock price\n\
 1: %.2f, 2: %.2f, or 3: %.2f\n\
-Enter the number of the price that you want to buy at('1', '2' or '3'):" % offers[0], offers[1], offers[2])
+Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offers[0], offers[1], offers[2]))
         while True:
             user_offer = input(":")
             if user_offer in ["1","2","3"]:
-                offer_price = offers[user_offer-1]
+                offer_price = offers[int(user_offer)-1]
                 break
             else:
                 print("Invalid input")
