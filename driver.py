@@ -47,6 +47,7 @@ def view(stock_market,user):
     user_in = input(":").lower()
     if user_in == 'my':
         user.display_user()
+        print(user.display_net_worth)
     elif user_in == 'market':
         for stock in stock_market.stocks:
             print(str(stock))
@@ -109,7 +110,8 @@ def sell(stock_market, user):
         print("You do not have any stocks to sell")
     else:
         while True:
-            print("What stock would you like to sell?")
+            print("What stock would you like to sell(enter name of company)?")
+            print(user.display_cash)
             print("Stocks to sell: " + user.stocks_to_string())
             user_in = input(":").lower()
             if user_in in [s.name.lower() for s in user.stocks]:
