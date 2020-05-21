@@ -12,6 +12,7 @@ class User:
                     stock.quantity_owned += quantity
         else:
             new_stock.is_owned = True
+            new_stock.quantity_owned = quantity
             self.stocks.append(new_stock)
         self.money -= (offer_price * quantity)
 
@@ -53,30 +54,32 @@ class User:
             return
         for stock in self.stocks:
             if current_index == num_stocks - 1:  # don't print "," at end
-                single_stock = stock.name + '(' + str(stock.price) + ')'
+                single_stock = stock.name + '($' + str(stock.price) + ')'
             else:
-                single_stock = stock.name + '(' + str(stock.price) + '), '
+                single_stock = stock.name + '($' + str(stock.price) + '), '
             stocks_string += single_stock
-        net_worth = self.money + self.get_total_worth()
-        stocks_string += "\nYour net worth is " + str(net_worth)
+            current_index += 1
+        stock_worth = self.get_stock_worth()
+        net_worth = self.money + stock_worth
+        stocks_string += "\nYour net worth is $" + str(round(net_worth,2))
         return stocks_string
 
     def display_user(self):
         """displays the name, cash, and stocks the user has"""
         stock = self.stocks_to_string()
         if stock:
-            str_to_print = "Name: " + self.name + "\nCash Left: " + str(self.money) + "\nStocks: " + stock
+            str_to_print = "Name: " + self.name + "\nCash Left: $" + str(self.money) + "\nStocks: " + stock
         else:
-            str_to_print = "Name: " + self.name + "\nCash Left: " + str(self.money) + "\nStocks: None"
+            str_to_print = "Name: " + self.name + "\nCash Left: $" + str(self.money) + "\nStocks: None"
         print(str_to_print)
 
-    def get_total_worth(self):
+    def get_stock_worth(self):
         """returns the amount of money left + market price of the stocks the user owns"""
         stock_worth = 0.0
         for stock in self.stocks:
             current_worth = stock.price * stock.quantity_owned
             stock_worth += current_worth
-        return stock_worth
+        return round(stock_worth,2)
 
     def is_stock_owned(self, stock_to_check):
         """checks if user owns the inputted stock name string"""
