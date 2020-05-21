@@ -14,6 +14,10 @@ def main():
             user = startup()
             initialized = True
         print("Enter 'view', 'buy', 'sell', 'advance', 'help' or 'exit':")
+        if user.get_net_worth() <= 0:
+            print("Game over. You lost all your worth, loser.")
+            exit_me(user)
+            break
         try:
             user_in = input(":").lower()
             if user_in == "view":
@@ -28,10 +32,11 @@ def main():
             elif user_in == "help":
                 help_me()
             elif user_in == "exit":
+                exit_me(user)
                 break
         except KeyboardInterrupt:
             break
-    return "\nThank you for playing our stock market game!"
+    return "\nThank you for playing Stockify!"
 
 def help_me():
     print("Welcome to Stockify!\n\
@@ -137,7 +142,7 @@ def sell(stock_market, user):
 def startup():
     #initialize the stock market game
     #will return with initial money count and user name
-    print("\nHello, welcome to the stock market game!\n\
+    print("\nHello, welcome Stockify!\n\
 This game consists of buying and selling stock with\n\
 the purpose of simulating the real stock market.\n\n\
 In this game the stocks are simulations of a real\n\
