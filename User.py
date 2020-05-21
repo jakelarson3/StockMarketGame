@@ -70,7 +70,7 @@ class User:
         print("Your net worth is $" + str(round(net_worth, 2)))
 
     def display_cash(self):
-        return "Cash Left: " + self.money
+        return "Cash Left: " + str(self.money)
 
     def display_user(self):
         """displays the name, cash, and stocks the user has"""
