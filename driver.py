@@ -122,6 +122,7 @@ def sell(stock_market, user):
                             user_quantity = input(":").lower()
                             if user_quantity.isdigit() and int(stock_to_sell.quantity_owned) >= int(user_quantity):
                                 user.sell_stock(stock_to_sell, int(user_quantity))
+                                print("Stock(s) sold!")
                                 return
                             else:
                                 print("Invalid input")
