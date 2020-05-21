@@ -18,7 +18,7 @@ class User:
     def sell_stock(self, stock_to_remove, quantity):
         """sells the stock that the user wants to sell"""
         for stock in self.stocks:
-            if stock.name.lower() == stock_to_remove.name.lower():
+            if stock_to_remove == stock:
                 if stock.quantity_owned > 1:
                     if quantity > stock.quantity_owned:
                         print("You do not own that much of the stock!")
@@ -53,10 +53,12 @@ class User:
             return
         for stock in self.stocks:
             if current_index == num_stocks - 1:  # don't print "," at end
-                single_stock = stock.name
+                single_stock = stock.name + '(' + str(stock.price) + ')'
             else:
-                single_stock = stock.name + ', '
+                single_stock = stock.name + '(' + str(stock.price) + '), '
             stocks_string += single_stock
+        net_worth = self.money + self.get_total_worth()
+        stocks_string += "\nYour net worth is " + net_worth
         return stocks_string
 
     def display_user(self):
