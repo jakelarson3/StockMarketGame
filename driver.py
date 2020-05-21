@@ -85,16 +85,18 @@ Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offe
             user_amount = input(":")
             try:
                 user_amount = int(user_amount)
-                if user.can_user_afford(offer_price, user_amount):
+                if user.can_user_afford(offer_price, int(user_amount)):
                     #buy stock
                     user.buy_stock(stock_to_buy, user_amount, offer_price)
                     print("Stock purchased")
                     break
                 else:
                     print("You can not afford that, try again")
+                    printed = True
                     raise ValueError
             except ValueError:
-                print("Invalid input")
+                if not printed:
+                    print("Invalid input")
     elif user_in == "back":
         pass
     else:
@@ -102,13 +104,37 @@ Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offe
         buy(stock_market,user)
     return ""
 
-def sell():
+def sell(stock_market, user):
+    if user.stocks == None:
+        print("You do not have any stocks to sell")
+    else:
+        while True:
+            print("What stock would you like to sell?")
+            print("Stocks to sell: " + user.stocks_to_string())
+            user_in = input(":").lower()
+            if user_in in [s.name.lower() for s in user.stocks]:
+                for stock in user.stocks:
+                    if stock.name.lower() == user_in:
+                        stock_to_sell = stock
+                        print("{0}, quantity: {1}, market price: {2}".format(stock_to_sell.name, stock_to_sell.quantity_owned, round(stock_to_sell.price,2)))
+                        print("What quantity of stock would you like to sell(integer)?")
+                        while True:
+                            user_quantity = input(":").lower()
+                            if user_quantity.isdigit() and stock_to_sell.quantity_owned >= user_quantity:
+                                user.sell_stock(stock_to_sell, int(user_quantity))
+                                return
+                            else:
+                                print("Invalid input")
+            elif user_in == "back":
+                return
+            else:
+                print("Invalid input")
     return ""
 
 def startup():
     #initialize the stock market game
     #will return with initial money count and user name
-    print("Hello, welcome to the stock market game!\n\
+    print("\nHello, welcome to the stock market game!\n\
 This game consists of buying and selling stock with\n\
 the purpose of simulating the real stock market.\n\n\
 In this game the stocks are simulations of a real\n\
@@ -123,11 +149,11 @@ just restart :)      Good Luck!\n")
             print("Invalid name")
     while True:
         init_money = input("Please enter starting cash amount(100-10,000): ")
-        if init_money.isdigit() and 2 < len(init_money) < 5:
+        if init_money.isdigit() and 2 < len(init_money) < 6 and 100 <= float(init_money) <= 10000:
             break
         else:
             print("Invalid amount")
-    user = User(name, init_money)
+    user = User(name, float(init_money))
     return user
 
 if __name__ == "__main__":
