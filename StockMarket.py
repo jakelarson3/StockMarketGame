@@ -36,7 +36,7 @@ class StockMarket:
     def overnight_stock_update(self):
         """updates the stock price of each stock by a (semi) random amount"""
         if self.is_market_boom or self.is_market_crash:
-            if self.days_of_boom_crash == 2:  # max days of boom or crash
+            if self.days_of_boom_crash == 5:  # max days of boom or crash
                 self.is_market_crash = False
                 self.is_market_boom = False
             else:
@@ -46,8 +46,10 @@ class StockMarket:
         if not self.is_market_boom and not self.is_market_crash:
             if 0.00 < random_chance <= 0.04:
                 self.is_market_crash = True
+                print("MARKET CRASH! Might want to sell your stock!")
             elif 0.96 < random_chance < 1:
                 self.is_market_boom = True
+                print("MARKET BOOM! Buy those stocks baby!")
 
         if self.is_market_boom:
             self.boom_stock_update()
