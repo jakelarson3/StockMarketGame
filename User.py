@@ -1,5 +1,6 @@
 class User:
     def __init__(self, name, money_amount):
+        self.initial_money = money_amount
         self.name = name
         self.money = float(money_amount)
         self.stocks = []
@@ -88,6 +89,10 @@ class User:
             stock_worth += current_worth
         return round(stock_worth,2)
 
+    def get_net_worth(self):
+        stock_worth = self.get_stock_worth()
+        return stock_worth + self.money
+
     def is_stock_owned(self, stock_to_check):
         """checks if user owns the inputted stock name string"""
         for stock in self.stocks:
@@ -117,6 +122,14 @@ class User:
             for market_stock in stock_market_stocks_list:
                 if stock.name == market_stock.name:
                     stock.set_price(market_stock.price)
+
+    def print_end(self):
+        net_worth = self.get_net_worth()
+        print('You started with: $' + str(self.initial_money) + " in cash")
+        print('You ended with: $' + str(self.money) + " in cash")
+        print('You ended with a net worth of: $' + str(net_worth))
+        gain_loss = net_worth - self.initial_money
+        print('You gained/lost: $' + str(gain_loss))
 
 
 
