@@ -86,7 +86,7 @@ Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offe
             else:
                 print("Invalid input")
 
-        print("Enter the quantitiy of the stock you want(integer only): ")
+        print("Enter the quantity of the stock you want(integer only): ")
         while True:
             user_amount = input(":")
             try:
