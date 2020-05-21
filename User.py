@@ -58,7 +58,7 @@ class User:
                 single_stock = stock.name + '(' + str(stock.price) + '), '
             stocks_string += single_stock
         net_worth = self.money + self.get_total_worth()
-        stocks_string += "\nYour net worth is " + net_worth
+        stocks_string += "\nYour net worth is " + str(net_worth)
         return stocks_string
 
     def display_user(self):
@@ -100,7 +100,6 @@ class User:
                     return False
                 else:
                     return True
-
 
     def update_stocks(self, stock_market_stocks_list):
         """updates the current market values of the stock market to the users' stock list"""
