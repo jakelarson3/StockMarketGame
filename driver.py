@@ -27,6 +27,7 @@ def main():
             elif user_in == "sell":
                 sell(stock_market, user)
             elif user_in == "advance":
+                print("You have advanced a day! Stock prices have changed.")
                 stock_market.next_day()
                 user.update_stocks(stock_market.stocks)
             elif user_in == "help":
