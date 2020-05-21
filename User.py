@@ -62,9 +62,11 @@ class User:
         return stocks_string
 
     def display_net_worth(self):
+        if len(self.stocks) == 0:
+            return
         stock_worth = self.get_stock_worth()
         net_worth = self.money + stock_worth
-        return "Your net worth is $" + str(round(net_worth, 2))
+        print("Your net worth is $" + str(round(net_worth, 2)))
 
     def display_cash(self):
         return "Cash Left: " + self.money
