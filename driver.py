@@ -120,7 +120,7 @@ def sell(stock_market, user):
                         print("What quantity of stock would you like to sell(integer)?")
                         while True:
                             user_quantity = input(":").lower()
-                            if user_quantity.isdigit() and stock_to_sell.quantity_owned >= user_quantity:
+                            if user_quantity.isdigit() and int(stock_to_sell.quantity_owned) >= int(user_quantity):
                                 user.sell_stock(stock_to_sell, int(user_quantity))
                                 return
                             else:
