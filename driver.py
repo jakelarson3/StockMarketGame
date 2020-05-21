@@ -147,7 +147,7 @@ def sell(stock_market, user):
 def startup():
     #initialize the stock market game
     #will return with initial money count and user name
-    print("\nHello, welcome Stockify!\n\
+    print("\nHello, welcome to Stockify!\n\
 This game consists of buying and selling stock with\n\
 the purpose of simulating the real stock market.\n\n\
 In this game the stocks are simulations of a real\n\
