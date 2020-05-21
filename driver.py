@@ -19,7 +19,7 @@ def main():
             exit_me(user)
             break
         try:
-            user_in = input(":").lower()
+            user_in = input(">>").lower()
             if user_in == "view":
                 view(stock_market, user)
             elif user_in == "buy":
@@ -42,14 +42,14 @@ def help_me():
     print("Welcome to Stockify!\n\
 This is a stock market game. You are in the main menu.\n\
 Your options are to view, buy, or sell stocks.\n\
-Enter either 'view', 'buy', or 'sell'.\n\
+Enter either 'view', 'buy', or 'sell',\n\
 or enter 'exit' to stop the game or enter\n\
 help if you want to see this lovely message again :)")
     return
 
 def view(stock_market,user):
     print("Would you like to view your own stock or market stocks (enter 'my' or 'market' or 'back'):")
-    user_in = input(":").lower()
+    user_in = input(">>").lower()
     if user_in == 'my':
         user.display_user()
         user.display_net_worth()
@@ -68,7 +68,7 @@ def buy(stock_market, user):
 Your options are: 'Wonka Industries', 'Acme Corp.', 'Stark Industries',\n\
 'Wayne Enterprises', 'Soylent', 'Hooli', 'Prestige Worldwide', 'Los Pollos Hermanos',\n\
 'Oscorp', 'Iron Bank of Braavos'")
-    user_in = input(":").lower()
+    user_in = input(">>").lower()
     if user_in in [s.lower() for s in stock_market.stock_names]:
         for stock in stock_market.stocks:
             if user_in == stock.name.lower():
@@ -79,7 +79,7 @@ Your options are: 'Wonka Industries', 'Acme Corp.', 'Stark Industries',\n\
 1: %.2f, 2: %.2f, or 3: %.2f\n\
 Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offers[0], offers[1], offers[2]))
         while True:
-            user_offer = input(":")
+            user_offer = input(">>")
             if user_offer in ["1","2","3"]:
                 offer_price = offers[int(user_offer)-1]
                 break
@@ -88,7 +88,7 @@ Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offe
 
         print("Enter the quantity of the stock you want(integer only): ")
         while True:
-            user_amount = input(":")
+            user_amount = input(">>")
             try:
                 user_amount = int(user_amount)
                 if user.can_user_afford(offer_price, int(user_amount)):
@@ -122,7 +122,7 @@ def sell(stock_market, user):
             print("What stock would you like to sell(enter name of company)?")
             print(user.display_cash)
             print("Stocks to sell: " + user.stocks_to_string())
-            user_in = input(":").lower()
+            user_in = input(">>").lower()
             if user_in in [s.name.lower() for s in user.stocks]:
                 for stock in user.stocks:
                     if stock.name.lower() == user_in:
@@ -130,7 +130,7 @@ def sell(stock_market, user):
                         print("{0}, quantity: {1}, market price: {2}".format(stock_to_sell.name, stock_to_sell.quantity_owned, round(stock_to_sell.price,2)))
                         print("What quantity of stock would you like to sell(integer)?")
                         while True:
-                            user_quantity = input(":").lower()
+                            user_quantity = input(">>").lower()
                             if user_quantity.isdigit() and int(stock_to_sell.quantity_owned) >= int(user_quantity):
                                 user.sell_stock(stock_to_sell, int(user_quantity))
                                 print("Stock(s) sold!")
