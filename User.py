@@ -1,7 +1,7 @@
 class User:
     def __init__(self, name, money_amount):
         self.name = name
-        self.money = money_amount
+        self.money = float(money_amount)
         self.stocks = []
 
     def buy_stock(self, new_stock, quantity, offer_price):
