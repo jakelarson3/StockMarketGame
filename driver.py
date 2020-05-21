@@ -110,6 +110,10 @@ Enter the number of the price that you want to buy at('1', '2' or '3'):" % (offe
         buy(stock_market,user)
     return ""
 
+def exit_me(user):
+    user.print_end()
+    return
+
 def sell(stock_market, user):
     if user.stocks == None:
         print("You do not have any stocks to sell")
