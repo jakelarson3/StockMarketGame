@@ -9,7 +9,7 @@ class User:
         """for when a user wants to buy a stock"""
         if new_stock.is_owned:
             for stock in self.stocks:
-                if new_stock.lower() == stock.name.lower():
+                if new_stock == stock:
                     stock.quantity_owned += quantity
         else:
             new_stock.is_owned = True
@@ -127,9 +127,9 @@ class User:
         net_worth = self.get_net_worth()
         print('You started with: $' + str(self.initial_money) + " in cash")
         print('You ended with: $' + str(self.money) + " in cash")
-        print('You ended with a net worth of: $' + str(net_worth))
+        print('You ended with a net worth of: $' + str(round(net_worth,2)))
         gain_loss = net_worth - self.initial_money
-        print('You gained/lost: $' + str(gain_loss))
+        print('You gained/lost: $' + str(round(gain_loss,2)))
 
 
 
